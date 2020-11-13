@@ -1,30 +1,41 @@
-def my_each(array)
-  i = 0
-  while i < array.length
-     yield array[i]
-     i+=1
-  end
-  array
-end
-
-def my_collect(array)
-  i = 0
-  new = []
-  while i < array.length
-     new << yield(array[i])
+def hello(array)
+   i = 0
+   while i < array.length
+     yield(array[i])
      i += 1
-  end
-  new
-end
+   end
+ end 
+ 
+ 
+ hello(["Tim", "Tom", "Jim"]) { |name| puts "Hi, #{name}" }
 
-def my_select(collection)
-  i = 0
-  new = []
-  while i < collection.length
-     if yield(collection[i]) == true
-        new << collection[i]
-     end
+ def hello(array)
+   i = 0
+   while i < array.length
+     binding.pry
+     yield(array[i])
      i += 1
-  end
-  new
-end
+   end
+ end 
+ Now, run the file with ruby lib/practicing_returns.rb. You should be dropped right into your binding. Let's manually execute our yield so that we can see the return value. In the Pry console in your terminal:
+ 
+ yield(array[i])
+
+ def hello(array)
+   i = 0
+   collection = []
+   while i < array.length
+     collection << yield(array[i])
+     i += 1
+   end
+ end 
+
+ def hello(array)
+   i = 0
+   collection = []
+   while i < array.length
+     collection << yield(array[i])
+     i += 1
+   end
+   collection
+ end 
